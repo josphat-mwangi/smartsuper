@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const multer = require('multer');
-const {categoryValidation} =  require('../validation/categoryValidation');
-const {postValidation} =  require('../validation/postValidation');
+// const {categoryValidation} =  require('../validation/categoryValidation');
+// const {postValidation} =  require('../validation/postValidation');
 const Product = require("../models/product");
 const Cartegory = require("../models/category")
 
@@ -109,18 +109,18 @@ router.get("/getproduct", async(req, res)=>{
 
 
 router.post("/product",   async(req, res)=>{
-    console.log(req.body)
-    //validating user inputs
-    const {error} = postValidation(req.body);
+    // console.log(req.body)
+    // //validating user inputs
+    // const {error} = postValidation(req.body);
 
-    // if error exists then send back error
-    if(error){
-        return  res.json({
-            status: "Failed",
-            statusCode: 400,
-            message: error.details[0].message
-        })
-    }
+    // // if error exists then send back error
+    // if(error){
+    //     return  res.json({
+    //         status: "Failed",
+    //         statusCode: 400,
+    //         message: error.details[0].message
+    //     })
+    // }
 
     // const owner = req.user.user_id
     const newProduct = new Product({
@@ -253,16 +253,16 @@ router.patch("/category/:categoryId", async(req, res)=>{
 //post cartegory
 router.post("/addCategory", async(req, res)=>{
     //validating user inputs
-    const {error} = categoryValidation(req.body)
-    // if error exists then send back error
-    if(error){
-        return  res.json({
-            status: "Failed",
-            statusCode: 400,
-            message: error.details[0].message
-        })
+    // const {error} = categoryValidation(req.body)
+    // // if error exists then send back error
+    // if(error){
+    //     return  res.json({
+    //         status: "Failed",
+    //         statusCode: 400,
+    //         message: error.details[0].message
+    //     })
         
-    }
+    // }
 
     const categoryName = await Cartegory.findOne({name:req.body.name});
     // if cartegory name exist then return 
