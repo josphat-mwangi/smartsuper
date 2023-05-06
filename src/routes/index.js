@@ -38,7 +38,7 @@ const upload = multer({
 
 
 
-router.post("/payment", async(req, res)=>{
+router.post("/pay", async(req, res)=>{
     try {
         const data ={
             "email": req.body.email, 
@@ -56,6 +56,7 @@ router.post("/payment", async(req, res)=>{
         const result = await response.json();
         res.json(result);
     } catch (error) {
+        console.log("there is an error")
        res.json({
             status: "errr",
             msg: error
